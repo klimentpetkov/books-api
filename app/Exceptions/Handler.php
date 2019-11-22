@@ -60,6 +60,7 @@ class Handler extends ExceptionHandler
         else if($exception instanceof JWTException)
             return response()->json(['error' => Constants::TOKEN_PROBLEM], Constants::STATUS_BAD_REQUEST);
 
+
         if ($exception instanceof ModelNotFoundException)
             return response()->json(['error' => Constants::RESOURCE_NOT_FOUND], Constants::STATUS_NOT_FOUND);
 

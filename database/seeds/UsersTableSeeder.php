@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-use Illuminate\Support\Str;
 
 class UsersTableSeeder extends Seeder
 {
@@ -16,10 +15,17 @@ class UsersTableSeeder extends Seeder
         $faker = Faker::create();
 
         DB::table('users')->insert([
-            'name' => $faker->firstName('m') . ' ' . $faker->lastName('m'),
-            'email' => $faker->email(),
+            'name' => $faker->firstName('female') . ' ' . $faker->lastName('female'),
+            'email' => $faker->safeEmail(),
             'password' => Hash::make('testpass'),
             'role' => 'admin'
+        ]);
+
+        DB::table('users')->insert([
+            'name' => $faker->firstName('male') . ' ' . $faker->lastName('male'),
+            'email' => $faker->safeEmail(),
+            'password' => Hash::make('testpass'),
+            'role' => 'user'
         ]);
     }
 }

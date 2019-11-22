@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Constants;
 
 class AuthenticateApi
 {
@@ -15,42 +16,18 @@ class AuthenticateApi
      */
     public function handle($request, Closure $next)
     {
-        /*if () {
+        if ( $request->segment(2) === 'books' && !is_null($request->bearerToken()) && auth()->user() && auth()->user()->isUser()) {
 
-        }*/
-        $array = [
-            'path' => $request->path(),
-            'isCertainPath' => $request->is('test/request/1'),
-            'url' => $request->url(),
-            'fullUrl' => $request->fullUrl(),
-            'method' => $request->method(),
-            'isPost' => $request->isMethod('post')
-        ];
-
-        dd($array);
-
-//        $now = \Carbon\Carbon::now(ini_get('date.timezone'));
-//        $request->path()
-//        $request->is('test/my')
-//        $request->url()
-//        $request->fullUrl()
-//        $request->method()
-//        $request->method
-//        $request->is('test/request/1');
-//        $request->isMethod('post') ? true : false;
-//        $now = \Carbon\Carbon::now(ini_get('date.timezone'));
-//        dd($now);
-//        dd($request->bearerToken());
-//        dd($request->user()->hasRole('admin'));
-
-//        if (!$request->user() || !($request->user()->authorized_at))
-
-//        if (!$request->bearerToken() || $request)
-//        if ($this->auth->guard($guard)->check()) {
-        // 10 minutes passed
-        /*if ((strtotime($now) - strtotime($request->user()->authorized_at)) >= 600) {
-
-        }*/
+            if (
+                ($request->isMethod("GET") && $request->segment(3) === 'create') ||
+                (
+                    ($request->isMethod("PATCH") || $request->isMethod("DELETE")) &&
+                    is_numeric($request->segment(3))
+                )
+            ) {
+                return response()->json(['message' => Constants::ACCESS_DENIED], Constants::STATUS_OK);
+            }
+        }
 
         return $next($request);
     }

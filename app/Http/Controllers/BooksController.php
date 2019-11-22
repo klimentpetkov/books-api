@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Constants;
@@ -28,11 +29,14 @@ class BooksController extends Controller
     {
         $data = $request->only(['title', 'description', 'author']);
         $validator = $this->getValidator($data);
-        if ($validator->fails())
-            return response()->json($validator->errors(), Constants::STATUS_BAD_REQUEST);
 
-        if (!Book()::create($data))
-            return response()->json(['message' => Constants::RESOURCE_NOT_SAVED], Constants::STATUS_SERVICE_UNAVAILABLE);
+        if ($validator->fails())
+            return response()->json(['message' =>  Constants::VALIDATION_ERROR,'data' => $validator->errors()], Constants::STATUS_BAD_REQUEST);
+
+        $data['created_at'] = Carbon::now('Europe/Sofia');
+
+        if (!Book::create($data))
+            return response()->json(['message' => Constants::RESOURCE_NOT_SAVED], Constants::STATUS_OK);
 
         return response()->json(['message' => Constants::RESOURCE_SAVED], Constants::STATUS_OBJECT_CREATED);
     }
@@ -55,7 +59,7 @@ class BooksController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Book  $book
+     * @param  int  $book
      * @return \Illuminate\Http\Response
      */
      public function update(Request $request, $id)
@@ -88,7 +92,7 @@ class BooksController extends Controller
             return response()->json(['message' => Constants::RESOURCE_NOT_FOUND], Constants::STATUS_NOT_FOUND);
 
         $book->delete();
-        return response()->json(['message' => Constants::RESOURCE_DELETED], Constants::STATUS_NO_CONTENT);
+        return response()->json(['message' => Constants::RESOURCE_DELETED], Constants::STATUS_OK);
     }
 
     /**

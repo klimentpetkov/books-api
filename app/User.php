@@ -41,15 +41,6 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    /*public function generateToken()
-    {
-        $this->api_token = Str::random(60);
-        $this->authorized_at = \Carbon\Carbon::now();
-        $this->save();
-
-        return $this->api_token;
-    }*/
-
     public function isAdmin()
     {
         return $this->role == 'admin';

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\AuthenticateApi;
+//use App\Http\Middleware\AuthenticateApi;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Constants;

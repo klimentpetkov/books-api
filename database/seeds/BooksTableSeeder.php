@@ -22,9 +22,9 @@ class BooksTableSeeder extends Seeder
 
             DB::table('books')->insert([
                 'title' => $faker->sentence(3),
-                'description' => $faker->sentence(15),
+                'description' => $faker->realText(200),
                 'author' => json_encode(['first_name' => $faker->firstName($gender), 'last_name' => $faker->lastName($gender)]),
-                'created_at' => Carbon\Carbon::now()
+                'created_at' => Carbon\Carbon::now('Europe/Sofia')
             ]);
         }
     }

@@ -11,10 +11,7 @@ class Book extends Model
     ];
 
     public $timestamps = false;
-    protected $fillable = ['title', 'description', 'author'];
 
-    public function setCreatedAtAttribute($value) {
-        $this->attributes['created_at'] = \Carbon\Carbon::now();
-    }
+    protected $fillable = ['title', 'description', 'author', 'created_at'];
 }
 
