@@ -21,15 +21,16 @@ restricts books access for every single request.
 #### Delete (admin only)
 
 If a regular user try to CREATE, UPDATE or DELETE a book record, then he/she will inevitably get this json response: 
+<p> &nbsp;</p>
 <code>
 {
     "message": "ACCESS DENIED"
 }
 </code>
-
+<p> &nbsp;</p>
 > Let's start setting up the application
-
-1) Create an .env file with database settings
+<p> &nbsp;</p>
+1) Create an .env file with database settings<br>
 2) Set jwt secret with <b>php artisan jwt:secret</b> 
     You shall see something similar to this in your .env file
    JWT_SECRET=XlKoKfLy8svUydXnsqD6Q24mGjVHOeGxafHyNEB4FloWyUGBJuEcS35oVLEj4bnh
@@ -38,22 +39,23 @@ If those below are missing you can generate and add them separately
    JWT_PRIVATE_KEY=qLnT5quTr8yNmfz3A6sGCMENPKU2ENvfgJWB9mNCFmUMuJ2PGP
    JWT_PASSPHRASE=g9wDD5nN7nfQnzPD64sj
    JWT_TTL=10
-   JWT_REFRESH_TTL=300
-3) Create a database - for MySQL I suggest you to set up the encoding as <b>UTF8MB4_UNICODE_CI</b>
-4) Run <b>composer install</b> to install all project dependencies 
-5) Create and seed the database <b>php artisan migrate:fresh --seed</b>
-
+   JWT_REFRESH_TTL=300<br>
+3) Create a database - for MySQL I suggest you to set up the encoding as <b>UTF8MB4_UNICODE_CI</b><br>
+4) Run <b>composer install</b> to install all project dependencies<br>
+5) Create and seed the database <b>php artisan migrate:fresh --seed</b><br>
+<p> &nbsp;</p>
 Here are the routes that navigate the API - run: <b>php artisan routes:list</b>
-
+<p> &nbsp;</p>
 Start the server <b>php artisan serve</b>
-
+<p> &nbsp;</p>
 Then run postman and inside try the routes:
 <p> &nbsp;</p>
 
 > LOGIN  http://127.0.0.1:8000/api/auth/login
 
-###### Method: 
-<b>POST</b>
+###### Method: <b>POST</b>
+
+<p> &nbsp;</p>
 
 ###### Params: 
 <table>
@@ -62,8 +64,9 @@ Then run postman and inside try the routes:
     <tr><td>password</td><td>_seeded_password_</td></tr>
 </table>
 
-###### Headers:
+<p> &nbsp;</p>
 
+###### Headers:
 <table>
     <tr><td>key</td><td>value</td></tr>
     <tr><td>Accept</td><td>application/json</td></tr>
@@ -71,6 +74,7 @@ Then run postman and inside try the routes:
 </table>
 
 ###### The response shall be similar to this
+<p> &nbsp;</p>
 <code>
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU3NDMzNDQ5NCwiZXhwIjoxNTc0MzM1MDk0LCJuYmYiOjE1NzQzMzQ0OTQsImp0aSI6IjZZVU5Xb3lYRXF5TkxQTXYiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEiLCJuYW0iOiJTb21ldGhpbmcifQ.y3WDmfSoM00H2Zmoh-2jJCBkbjO_GGY8f5lqxZ-vnGw",
@@ -83,8 +87,11 @@ Then run postman and inside try the routes:
 
 > PAYLOAD  http://127.0.0.1:8000/api/auth/payload
 
-###### Method: 
-<b>POST</b>
+<p> &nbsp;</p>
+
+###### Method: <b>POST</b>
+
+<p> &nbsp;</p>
 
 ###### Headers:
 <table>
@@ -94,6 +101,7 @@ Then run postman and inside try the routes:
     <tr><td>Authorization-type</td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU3NDMzNDQ5NCwiZXhwIjoxNTc0MzM1MDk0LCJuYmYiOjE1NzQzMzQ0OTQsImp0aSI6IjZZVU5Xb3lYRXF5TkxQTXYiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEiLCJuYW0iOiJTb21ldGhpbmcifQ.y3WDmfSoM00H2Zmoh-2jJCBkbjO_GGY8f5lqxZ-vnGw </td></tr>
 </table>
 
+<p> &nbsp;</p>
 ###### The response shall be similar to this
 <code>
 {
@@ -108,14 +116,17 @@ Then run postman and inside try the routes:
 }
 </code>
 
+<p> &nbsp;</p>
+
 As you can see from the jwt authentication <a href="https://jwt-auth.readthedocs.io/en/develop/auth-guard/">documentation</a> there is a method claims() that cna be used to add additional payload parameters, as in our case the parameter nam 
 
 <p> &nbsp;</p>
 
 > ME  http://127.0.0.1:8000/api/auth/me
 
-###### Method: 
-<b>POST</b>
+###### Method: <b>POST</b>
+
+<p> &nbsp;</p>
 
 ###### Headers:
 <table>
@@ -124,6 +135,8 @@ As you can see from the jwt authentication <a href="https://jwt-auth.readthedocs
     <tr><td>Content-type</td><td>application/x-www-form-urlencoded</td></tr>
     <tr><td>Authorization-type</td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU3NDMzNDQ5NCwiZXhwIjoxNTc0MzM1MDk0LCJuYmYiOjE1NzQzMzQ0OTQsImp0aSI6IjZZVU5Xb3lYRXF5TkxQTXYiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEiLCJuYW0iOiJTb21ldGhpbmcifQ.y3WDmfSoM00H2Zmoh-2jJCBkbjO_GGY8f5lqxZ-vnGw</td></tr>
 </table>
+
+<p> &nbsp;</p>
 
 ###### The response shall be similar to this
 <code>
@@ -139,8 +152,11 @@ As you can see from the jwt authentication <a href="https://jwt-auth.readthedocs
 
 > LOGOUT  http://127.0.0.1:8000/api/auth/logout
 
-###### Method: 
-<b>POST</b>
+<p> &nbsp;</p>
+
+###### Method: <b>POST</b>
+
+<p> &nbsp;</p>
 
 ###### Headers:
 <table>
@@ -149,13 +165,20 @@ As you can see from the jwt authentication <a href="https://jwt-auth.readthedocs
     <tr><td>Content-type</td><td>application/x-www-form-urlencoded</td></tr>
 </table>
 
+<p> &nbsp;</p>
+
 ###### For Body check <u>x-www-form-urlencoded</u> and provide the token
 <table>
     <tr><td>key</td><td>value</td></tr>
     <tr><td>token</td><td>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU3NDMzNDQ5NCwiZXhwIjoxNTc0MzM1MDk0LCJuYmYiOjE1NzQzMzQ0OTQsImp0aSI6IjZZVU5Xb3lYRXF5TkxQTXYiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEiLCJuYW0iOiJTb21ldGhpbmcifQ.y3WDmfSoM00H2Zmoh-2jJCBkbjO_GGY8f5lqxZ-vnGw</td></tr>
 </table>
 
+<p> &nbsp;</p>
+
 ###### You shall see this
+
+<p> &nbsp;</p>
+
 <code>
 {
     "message": "User logged out"
@@ -175,6 +198,7 @@ As you can see from the jwt authentication <a href="https://jwt-auth.readthedocs
     <tr><td>Accept</td><td>application/json</td></tr>
     <tr><td>Content-type</td><td>application/x-www-form-urlencoded</td></tr>
 </table>
+<p> &nbsp;</p>
 
 ###### For Body check <u>x-www-form-urlencoded</u> and provide the active token
 <table>
@@ -182,7 +206,12 @@ As you can see from the jwt authentication <a href="https://jwt-auth.readthedocs
     <tr><td>token</td><td>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTU3NDMzNDQ5NCwiZXhwIjoxNTc0MzM1MDk0LCJuYmYiOjE1NzQzMzQ0OTQsImp0aSI6IjZZVU5Xb3lYRXF5TkxQTXYiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEiLCJuYW0iOiJTb21ldGhpbmcifQ.y3WDmfSoM00H2Zmoh-2jJCBkbjO_GGY8f5lqxZ-vnGw</td></tr>
 </table>
 
+<p> &nbsp;</p>
+
 ###### The response with a new token shall be similar to this
+
+<p> &nbsp;</p>
+
 <code>
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9yZWZyZXNoIiwiaWF0IjoxNTc0MzM5NTUxLCJleHAiOjE1NzQzNDAxNzIsIm5iZiI6MTU3NDMzOTU3MiwianRpIjoiYkQ1d25VSnhJbGd1c3hzdSIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSIsIm5hbSI6IlNvbWV0aGluZyJ9.Mi6Uea92c29VsKlT8r_KTuZulGquSRNFgrGl2-1P9dc",
@@ -195,8 +224,11 @@ As you can see from the jwt authentication <a href="https://jwt-auth.readthedocs
 
 > BOOKS index http://127.0.0.1:8000/api/books
 
-###### Method: 
-<b>GET</b>
+<p> &nbsp;</p>
+
+###### Method: <b>GET</b>
+
+<p> &nbsp;</p>
 
 ###### Headers:
 <table>
@@ -206,7 +238,10 @@ As you can see from the jwt authentication <a href="https://jwt-auth.readthedocs
     <tr><td>Authorization</td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9yZWZyZXNoIiwiaWF0IjoxNTc0MzM5NTUxLCJleHAiOjE1NzQzNDAxNzIsIm5iZiI6MTU3NDMzOTU3MiwianRpIjoiYkQ1d25VSnhJbGd1c3hzdSIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSIsIm5hbSI6IlNvbWV0aGluZyJ9.Mi6Uea92c29VsKlT8r_KTuZulGquSRNFgrGl2-1P9dc</td></tr>
 </table>
 
+<p> &nbsp;</p>
+
 ###### The response will be a paginated list by 10 books similar to this
+<p> &nbsp;</p>
 <code>
 {
     "current_page": 1,
@@ -325,9 +360,12 @@ As you can see from the jwt authentication <a href="https://jwt-auth.readthedocs
 }
 </code>
 
+<p> &nbsp;</p>
+
 And if we decide to pass the page parameter like <b>http://127.0.0.1:8000/api/books?page=2</b>
-then if the pagi is one of the valid pages then corresponding information will show
+then if the page is one of the valid pages then corresponding information will show
 otherwise you can see this
+<p> &nbsp;</p>
 <code>
 {
     "current_page": 4,
@@ -349,8 +387,11 @@ otherwise you can see this
 
 > BOOKS create http://127.0.0.1:8000/api/books/create
 
-###### Method: 
-<b>GET</b>
+<p> &nbsp;</p>
+
+###### Method: <b>GET</b>
+
+<p> &nbsp;</p>
 
 ###### Headers:
 <table>
@@ -359,6 +400,8 @@ otherwise you can see this
     <tr><td>Content-type</td><td>application/x-www-form-urlencoded</td></tr>
     <tr><td>Authorization</td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9yZWZyZXNoIiwiaWF0IjoxNTc0MzM5NTUxLCJleHAiOjE1NzQzNDAxNzIsIm5iZiI6MTU3NDMzOTU3MiwianRpIjoiYkQ1d25VSnhJbGd1c3hzdSIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSIsIm5hbSI6IlNvbWV0aGluZyJ9.Mi6Uea92c29VsKlT8r_KTuZulGquSRNFgrGl2-1P9dc</td></tr>
 </table>
+
+<p> &nbsp;</p>
 
 ###### Params:
 <table>
@@ -369,14 +412,20 @@ otherwise you can see this
     <tr><td>author[last_name]</td><td>Last name</td></tr>
 </table>
 
+<p> &nbsp;</p>
+
 ###### When data are correct the result is
+<p> &nbsp;</p>
 <code>
 {
     "message": "Resource saved"
 }
 </code>
 
+<p> &nbsp;</p>
+
 ###### Else if validation is not passed the result is
+<p> &nbsp;</p>
 <code>
 {
     "message": "Validation error",
@@ -401,8 +450,11 @@ otherwise you can see this
 
 > BOOKS show http://127.0.0.1:8000/api/books/{id}
 
-###### Method: 
-<b>GET</b>
+<p> &nbsp;</p>
+
+###### Method: <b>GET</b>
+
+<p> &nbsp;</p>
 
 ###### Headers:
 <table>
@@ -411,6 +463,8 @@ otherwise you can see this
     <tr><td>Content-type</td><td>application/x-www-form-urlencoded</td></tr>
     <tr><td>Authorization</td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9yZWZyZXNoIiwiaWF0IjoxNTc0MzM5NTUxLCJleHAiOjE1NzQzNDAxNzIsIm5iZiI6MTU3NDMzOTU3MiwianRpIjoiYkQ1d25VSnhJbGd1c3hzdSIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSIsIm5hbSI6IlNvbWV0aGluZyJ9.Mi6Uea92c29VsKlT8r_KTuZulGquSRNFgrGl2-1P9dc</td></tr>
 </table>
+
+<p> &nbsp;</p>
 
 ###### Params:
 <table>
@@ -421,7 +475,10 @@ otherwise you can see this
     <tr><td>author[last_name]</td><td>Last name</td></tr>
 </table>
 
+<p> &nbsp;</p>
+
 ###### When id exists the result is similar to
+<p> &nbsp;</p>
 <code>
 {
     "data": {
@@ -437,7 +494,10 @@ otherwise you can see this
 }
 </code>
 
+<p> &nbsp;</p>
+
 ###### For non existent resources the result is
+<p> &nbsp;</p>
 <code>
 {
     "message": "The resource does not exist"
@@ -448,8 +508,11 @@ otherwise you can see this
 
 > BOOKS update http://127.0.0.1:8000/api/books/{id}
 
-###### Method: 
-<b>PATCH</b>
+<p> &nbsp;</p>
+
+###### Method: <b>PATCH</b>
+
+<p> &nbsp;</p>
 
 ###### Headers:
 <table>
@@ -459,20 +522,28 @@ otherwise you can see this
     <tr><td>Authorization</td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9yZWZyZXNoIiwiaWF0IjoxNTc0MzM5NTUxLCJleHAiOjE1NzQzNDAxNzIsIm5iZiI6MTU3NDMzOTU3MiwianRpIjoiYkQ1d25VSnhJbGd1c3hzdSIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSIsIm5hbSI6IlNvbWV0aGluZyJ9.Mi6Uea92c29VsKlT8r_KTuZulGquSRNFgrGl2-1P9dc</td></tr>
 </table>
 
+<p> &nbsp;</p>
+
 ###### Params: (all that need to be changed)
 <table>
     <tr><td>key</td><td>value</td></tr>
     <tr><td>author[first_name]</td><td>Some name</td></tr>
 </table>
 
+<p> &nbsp;</p>
+
 ###### When id exists the result is
+<p> &nbsp;</p>
 <code>
 {
     "message": "Resource saved"
 }
 </code>
 
+<p> &nbsp;</p>
+
 ###### For non existent resources the result is
+<p> &nbsp;</p>
 <code>
 {
     "message": "The resource does not exist"
@@ -483,8 +554,11 @@ otherwise you can see this
 
 > BOOKS delete http://127.0.0.1:8000/api/books/{id}
 
-###### Method: 
-<b>DELETE</b>
+<p> &nbsp;</p>
+
+###### Method: <b>DELETE</b>
+
+<p> &nbsp;</p>
 
 ###### Headers:
 <table>
@@ -494,14 +568,20 @@ otherwise you can see this
     <tr><td>Authorization</td><td>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9yZWZyZXNoIiwiaWF0IjoxNTc0MzM5NTUxLCJleHAiOjE1NzQzNDAxNzIsIm5iZiI6MTU3NDMzOTU3MiwianRpIjoiYkQ1d25VSnhJbGd1c3hzdSIsInN1YiI6MSwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSIsIm5hbSI6IlNvbWV0aGluZyJ9.Mi6Uea92c29VsKlT8r_KTuZulGquSRNFgrGl2-1P9dc</td></tr>
 </table>
 
+<p> &nbsp;</p>
+
 ###### When id exists the result is
+<p> &nbsp;</p>
 <code>
 {
     "message": "Resource deleted successfully"
 }
 </code>
 
+<p> &nbsp;</p>
+
 ###### For non existent resources the result is
+<p> &nbsp;</p>
 <code>
 {
     "message": "The resource does not exist"
