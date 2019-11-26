@@ -102,6 +102,7 @@ Then run postman and inside try the routes:
 </table>
 
 <p> &nbsp;</p>
+
 ###### The response shall be similar to this
 <code>
 {
